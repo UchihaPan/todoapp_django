@@ -15,52 +15,27 @@
 <body>
 
 
-<nav class="navbar navbar-expand-md navbar-light bg-warning">
-<div class="container">
-    <a class="navbar-brand" href="{% url 'home' %}">
-         <img src="{% static 'todo/logo.png' %}" width="30" height="30" class="d-inline-block align-top">
-        <span>Todo Woo</span>
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
+   <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <h5 class="my-0 mr-md-auto font-weight-normal" ><a href="{% url 'home'  %}">Avengers</a></h5>
+  <nav class="my-2 my-md-0 mr-md-3">
+
     {% if user.is_authenticated %}
-        <ul class="navbar-nav mr-auto">
+     <a class="btn btn-outline-primary" href="{% url 'createtodo'  %}">Create</a>
+      <a class="btn btn-outline-primary" href="{% url 'currenttodos' %}">Current</a>
+  <a class="btn btn-outline-primary" href="{% url 'completedtodos' %}">completed</a>
+      <a class="btn btn-outline-primary" href="{% url 'logout' %}">LogOut</a>
 
-                <li class="nav-item {{ current }}">
-                    <a class="nav-link" href="{% url 'currenttodos' %}">Current</a>
-                </li>
-                <li class="nav-item {{ completed }}">
-                    <a class="nav-link" href="{% url 'completedtodos' %}">Completed</a>
-                </li>
-                <li class="nav-item {{ create }}">
-                    <a class="nav-link" href="{% url 'createtodo' %}">Create</a>
-                </li>
+        {% else %}
+         <a class="btn btn-outline-primary" href="{% url 'login' %}">SignIn</a>
+        <a class="btn btn-outline-primary" href="{% url 'signup' %}">Sign up</a>
+      {% endif %}
 
-        </ul>
-    {% endif %}
-    <ul class="navbar-nav ml-auto">
-            {% if user.is_authenticated %}
-                <li class="nav-item">
-                    <a href="#" onclick="$('#signOutBtn').click()" class="nav-link">Logout</a>
-                    <form style='display: none;' method="POST" action="{% url 'logoutuser' %}">
-                        {% csrf_token %}
-                        <button id="signOutBtn" type="submit">Logout</button>
-                    </form>
-                </li>
-            {% else %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'signupuser' %}">Sign Up</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'loginuser' %}">Login</a>
-                </li>
-            {% endif %}
-        </ul>
-    </div>
+
+
+
+
+  </nav>
 </div>
-</nav>
 
 <div class="container">
 {% block content %}{% endblock %}
