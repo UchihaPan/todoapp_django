@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from todo import views
 from django.contrib.auth import views
-from .views import Signup,home,completedtodos,createtodo,currenttodos,viewtodo,deletetodo,completetodo
+from .views import Signup,home,completed,create,current,view,complete,delete
 
 
 urlpatterns = [
@@ -25,10 +25,10 @@ urlpatterns = [
     path('login/', views.LoginView.as_view(template_name='todo/login.html'), name='login'),
     path('logout/', views.LogoutView.as_view(), name='logout'),
     path('', home, name='home'),
-    path('create/', createtodo, name='createtodo'),
-    path('current/',currenttodos, name='currenttodos'),
-    path('completed/', completedtodos, name='completedtodos'),
-    path('todo/<int:pk>', viewtodo, name='viewtodo'),
-    path('todo/<int:pk>/complete', completetodo, name='completetodo'),
-    path('todo/<int:pk>/delete', deletetodo, name='deletetodo'),
+    path('create/', create, name='create'),
+    path('current/', current, name='current'),
+    path('completed/', completed, name='completed'),
+    path('todo/<int:pk>/', view, name='view'),
+    path('todo/<int:pk>/complete', complete, name='complete'),
+    path('todo/<int:pk>/delete', delete, name='delete'),
 ]
