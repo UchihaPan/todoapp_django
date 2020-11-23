@@ -24,10 +24,10 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = 'jwfsah=kl$+9w&mjf+ljhhan0kyjsibb0d@jyx9p%vc778mufj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1', 'uchihatodoapp.herokuapp.com']
 
-# Application definition
+
 
 INSTALLED_APPS = [
 'whitenoise.runserver_nostatic',

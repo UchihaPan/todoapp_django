@@ -34,14 +34,14 @@ def create(request):
     else:
         if request.method == 'POST':
             title = request.POST.get('title', '')
-            memo = request.POST.get('memo', '')
+            description = request.POST.get('memo', '')
             checkbox = request.POST.get('important', '')
             if checkbox != '':
                 important = True
             else:
                 important = False
 
-            todo = Todo(title=title, memo=memo, important=important)
+            todo = Todo(title=title, description=description, important=important)
             todo.user = request.user
             todo.save()
             return redirect('current')
@@ -70,14 +70,14 @@ def view(request, pk):
     else:
         try:
             title = request.POST.get('title', '')
-            memo = request.POST.get('memo', '')
+            description = request.POST.get('memo', '')
             checkbox = request.POST.get('important', '')
             if checkbox != '':
                 important = True
             else:
                 important = False
 
-            todo = Todo(title=title, description=memo, important=important)
+            todo = Todo(title=title, description=description, important=important)
             todo.user = request.user
             todo.save()
             return redirect('current')
